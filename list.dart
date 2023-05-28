@@ -9,17 +9,35 @@ class list extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Color list'),
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Color(0xFFFF4081),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+        child: Container(
+          child: const Text('list',
+          style: const TextStyle(fontSize: 32.0),
+          ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
+              label: 'List',
+              icon: const Icon(Icons.format_list_bulleted,size: 30,)
+          ),
+          const BottomNavigationBarItem(
+              label: 'slider',
+              icon: const Icon(Icons.tune,size: 30,)
+          ),
+        ],
+        onTap: (int value){
+          if (value == 1)
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder:
+          (context) => slider()),
+          );
+        },
       ),
     );
   }

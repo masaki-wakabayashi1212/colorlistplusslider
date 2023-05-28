@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'list.dart';
 
 class slider extends StatelessWidget {
 
@@ -7,18 +8,32 @@ class slider extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-
         title: const Text('Color slider'),
+        backgroundColor: Color(0xFF00BFA5),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+        child: Container(
+          child: const Text('slider',
+            style: const TextStyle(fontSize: 32.0),
+          ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
+              label: 'slider',
+              icon: const Icon(Icons.format_list_bulleted,size: 30,)
+          ),
+          const BottomNavigationBarItem(
+              label: 'slider',
+              icon: const Icon(Icons.tune,size: 30,)
+          ),
+        ],
+        onTap: (int value){
+          if (value == 0)
+            Navigator.pop(context);
+        },
       ),
     );
   }
