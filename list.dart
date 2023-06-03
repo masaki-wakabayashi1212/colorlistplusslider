@@ -10,11 +10,12 @@ class list extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Color list'),
         backgroundColor: Color(0xFFFF4081),
+        centerTitle: true,
       ),
       body: Center(
         child: Container(
           child: const Text('list',
-          style: const TextStyle(fontSize: 32.0),
+            style: const TextStyle(fontSize: 32.0),
           ),
         ),
       ),
@@ -33,10 +34,10 @@ class list extends StatelessWidget {
         onTap: (int value){
           if (value == 1)
             Navigator.push(
-                context,
-                MaterialPageRoute(builder:
-          (context) => slider()),
-          );
+              context,
+              MaterialPageRoute(builder:
+                  (context) => slider()),
+            );
         },
       ),
     );
