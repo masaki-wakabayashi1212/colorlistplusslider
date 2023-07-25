@@ -1,24 +1,63 @@
 import 'package:flutter/material.dart';
 import 'slider.dart';
 
-class list extends StatelessWidget {
+class User {
+  final String username;
+  final String urlAvatar;
+
+  const User({
+    required this.username,
+    required this.urlAvatar,
+  });
+}
+
+class list extends StatefulWidget {
+  const list({Key? key}) : super (key: key);
 
   @override
-  Widget build(BuildContext context) {
+  _listState createState() => _listState();
+}
 
-    return Scaffold(
+class _listState extends State<list>{
+  List<User> users = [
+    const User(
+      username: 'Red',
+      urlAvatar: 'images/ff0000.png',
+    ),
+    const User(
+      username: 'Mazenta',
+      urlAvatar: 'images/ff00ff.png',
+    ),
+    const User(
+      username: 'Blue',
+      urlAvatar: 'images/ff00ff.png',
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context)=>Scaffold(
       appBar: AppBar(
         title: const Text('Color list'),
         backgroundColor: Color(0xFFFF4081),
         centerTitle: true,
       ),
-      body: Center(
-        child: Container(
-          child: const Text('list',
-            style: const TextStyle(fontSize: 32.0),
-          ),
-        ),
+      body: ListView.builder(
+        itemCount: users.length,
+        itemBuilder: (context,index) {
+          final user = users[index];
+          return Card(
+            child: ListTile(
+              leading: CircleAvatar(
+                radius: 23,
+                backgroundImage: AssetImage(user.urlAvatar),
+              ),
+              title: Text(user.username),
+              trailing: const Icon(Icons.arrow_forward),
+            ),
+          );
+        }
       ),
+
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
         items: <BottomNavigationBarItem>[
@@ -41,5 +80,5 @@ class list extends StatelessWidget {
         },
       ),
     );
-  }
 }
+
